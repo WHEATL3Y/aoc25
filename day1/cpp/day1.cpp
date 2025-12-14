@@ -1,4 +1,4 @@
-#include "aoc.h"
+#include "../../cpp_utils/aoc.h"
 #include <iostream>
 #include <string>
 
@@ -8,7 +8,7 @@ int main(int argc, char* argv[]) {
     int answer1 = 0;
     int answer2 = 0;
     int pos = 50;
-    for (int i = 0; i < input_lines.size(); i++) {
+    for (unsigned long i = 0; i < input_lines.size(); i++) {
         std::string direction = input_lines[i].substr(0, 1);
         int distance = std::stoi(input_lines[i].substr(1));
         distance = direction == "L" ? -distance : distance;
@@ -26,4 +26,5 @@ int main(int argc, char* argv[]) {
     }
     std::cout << answer1 << std::endl;
     std::cout << answer2 << std::endl;
+    return 0;
 }
