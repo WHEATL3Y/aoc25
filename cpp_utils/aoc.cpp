@@ -2,30 +2,32 @@
 #include <fstream>
 #include <stdexcept>
 
-std::ifstream aoc::read_file_to_stream(std::string filename) {
-    std::ifstream input_stream(filename);
+using namespace std;
+
+ifstream aoc::read_file_to_stream(string filename) {
+    ifstream input_stream(filename);
     if (!input_stream) {
-        std::string err_message = "can't open file " + filename + "\n";
-        throw std::runtime_error{err_message};
+        string err_message = "can't open file " + filename + "\n";
+        throw runtime_error{err_message};
     }
     return input_stream;
 }
 
-std::string aoc::read_file_to_string(std::string filename) {
-    std::string input_data;
-    std::string line;
-    std::ifstream input_stream = aoc::read_file_to_stream(filename);
-    while(std::getline(input_stream, line)) {
+string aoc::read_file_to_string(string filename) {
+    string input_data;
+    string line;
+    ifstream input_stream = aoc::read_file_to_stream(filename);
+    while(getline(input_stream, line)) {
         input_data += line + "\n";
     }
     return input_data;
 }
 
-std::vector<std::string> aoc::read_file_to_lines(std::string filename) {
-    std::vector<std::string> input_data;
-    std::string line;
-    std::ifstream input_stream = aoc::read_file_to_stream(filename);
-    while(std::getline(input_stream, line)) {
+vector<string> aoc::read_file_to_lines(string filename) {
+    vector<string> input_data;
+    string line;
+    ifstream input_stream = aoc::read_file_to_stream(filename);
+    while(getline(input_stream, line)) {
         input_data.push_back((line));
     }
     return input_data;
@@ -33,4 +35,21 @@ std::vector<std::string> aoc::read_file_to_lines(std::string filename) {
 
 int aoc::mod(int a, int b) {
     return ((a % b) + b) % b;
+}
+
+vector<string> aoc::split(string input, char delimiter) {
+    vector<string> output = {};
+    string buf = ""; 
+    for (unsigned i = 0; i < input.length(); ++i) {
+        char current = input[i];
+        if (current != delimiter) {
+            buf.push_back(current);
+        }
+        else {
+            output.push_back(buf);
+            buf.clear();
+        }
+    }
+    output.push_back(buf);
+    return output;
 }

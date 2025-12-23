@@ -5,13 +5,16 @@
 #include <string>
 #include <vector>
 
+using namespace std;
+
 class aoc {
     private:
-        static std::ifstream read_file_to_stream(std::string filename);
+        static ifstream read_file_to_stream(string filename);
     public: 
-        static std::string read_file_to_string(std::string filename);
-        static std::vector<std::string> read_file_to_lines(std::string filename);
+        static string read_file_to_string(string filename);
+        static vector<string> read_file_to_lines(string filename);
         static int mod(int a, int b);
+        static vector<string> split(string input, char delimiter);
 };
 
 #endif
