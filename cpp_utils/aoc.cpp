@@ -1,6 +1,7 @@
 #include "aoc.h"
 #include <fstream>
 #include <stdexcept>
+#include <iostream> // Remove after debugging
 
 using namespace std;
 
@@ -52,4 +53,26 @@ vector<string> aoc::split(string input, char delimiter) {
     }
     output.push_back(buf);
     return output;
+}
+
+vector<string> aoc::split(string input, size_t length) {
+    vector<string> output = {};
+    for (size_t i = 0; i < input.length(); i += length) {
+        cout << i << "\t" << i + length << endl;
+        cout << input.substr(i, i + length) << endl;
+        output.push_back(input.substr(i, i + length));
+    }
+    return output;
+}
+
+string aoc::vec_to_string(vector<string> input) {
+    return aoc::vec_to_string(input, " ");
+}
+
+string aoc::vec_to_string(vector<string> input, string delimiter) {
+    string buffer = "";
+    for (size_t i = 0; i < input.size(); ++i) {
+        buffer += input[i] + delimiter;
+    }
+    return buffer.substr(0, input.size() + delimiter.length());
 }
